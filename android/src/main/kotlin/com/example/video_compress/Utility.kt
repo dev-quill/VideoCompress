@@ -34,16 +34,16 @@ class Utility(private val channelName: String) {
 
     fun getMediaInfoJson(context: Context, path: String): JSONObject {
         val file = File(path)
-        // val retriever = MediaMetadataRetriever()
-        val retriever =  FFmpegMediaMetadataRetriever();
-        retriever.setDataSource(path);
+        val retriever = MediaMetadataRetriever()
+        // val retriever =  FFmpegMediaMetadataRetriever();
+        // retriever.setDataSource(path);
         
 
-        // retriever.setDataSource(context, Uri.fromFile(file))
+        retriever.setDataSource(context, Uri.fromFile(file))
 
         val durationStr = retriever.extractMetadata(FFmpegMediaMetadataRetriever.METADATA_KEY_DURATION)
         val title = retriever.extractMetadata(FFmpegMediaMetadataRetriever.METADATA_KEY_TITLE) ?: ""
-        val author = retriever.extractMetadata(FFmpegMediaMetadataRetriever.METADATA_KEY_ARTIST) ?: ""
+        val author = retriever.extractMetadata(FFmpegMediaMetadataRetriever.METADATA_KEY_AUTHOR) ?: ""
         val widthStr = retriever.extractMetadata(FFmpegMediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH)
         val heightStr = retriever.extractMetadata(FFmpegMediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT)
         val duration = java.lang.Long.parseLong(durationStr)
