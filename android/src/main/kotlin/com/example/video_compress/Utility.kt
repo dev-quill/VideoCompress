@@ -1,5 +1,4 @@
 package com.example.video_compress
-// import wseemann.media.FFmpegMediaMetadataRetriever;
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -35,9 +34,6 @@ class Utility(private val channelName: String) {
     fun getMediaInfoJson(context: Context, path: String): JSONObject {
         val file = File(path)
         val retriever = MediaMetadataRetriever()
-        // val retriever =  FFmpegMediaMetadataRetriever();
-        // retriever.setDataSource(path);
-        
 
         retriever.setDataSource(context, Uri.fromFile(file))
 
