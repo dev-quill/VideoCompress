@@ -1,5 +1,5 @@
 package com.example.video_compress
-import wseemann.media.FFmpegMediaMetadataRetriever;
+// import wseemann.media.FFmpegMediaMetadataRetriever;
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -41,17 +41,17 @@ class Utility(private val channelName: String) {
 
         retriever.setDataSource(context, Uri.fromFile(file))
 
-        val durationStr = retriever.extractMetadata(FFmpegMediaMetadataRetriever.METADATA_KEY_DURATION)
-        val title = retriever.extractMetadata(FFmpegMediaMetadataRetriever.METADATA_KEY_TITLE) ?: ""
-        val author = retriever.extractMetadata(FFmpegMediaMetadataRetriever.METADATA_KEY_AUTHOR) ?: ""
-        val widthStr = retriever.extractMetadata(FFmpegMediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH)
-        val heightStr = retriever.extractMetadata(FFmpegMediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT)
+        val durationStr = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)
+        val title = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE) ?: ""
+        val author = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_AUTHOR) ?: ""
+        val widthStr = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH)
+        val heightStr = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT)
         val duration = java.lang.Long.parseLong(durationStr)
         var width = java.lang.Long.parseLong(widthStr)
         var height = java.lang.Long.parseLong(heightStr)
         val filesize = file.length()
         val orientation = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            retriever.extractMetadata(FFmpegMediaMetadataRetriever.METADATA_KEY_VIDEO_ROTATION)
+            retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_ROTATION)
         } else {
             null
         }
