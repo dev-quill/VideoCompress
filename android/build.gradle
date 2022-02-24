@@ -39,6 +39,11 @@ android {
     }
 }
 
+packagingOptions {
+    pickFirst 'lib/x86/libswscale.so'
+
+}
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.otaliastudios:transcoder:0.10.4'
