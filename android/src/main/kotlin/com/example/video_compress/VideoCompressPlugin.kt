@@ -6,6 +6,7 @@ import android.util.Log
 import com.otaliastudios.transcoder.Transcoder
 import com.otaliastudios.transcoder.TranscoderListener
 import com.otaliastudios.transcoder.source.TrimDataSource
+import com.otaliastudios.transcoder.source.ClipDataSource
 import com.otaliastudios.transcoder.source.UriDataSource
 import com.otaliastudios.transcoder.strategy.DefaultAudioStrategy
 import com.otaliastudios.transcoder.strategy.DefaultVideoStrategy
@@ -141,7 +142,7 @@ class VideoCompressPlugin : MethodCallHandler, FlutterPlugin {
 
                 val dataSource = if (startTime != null || duration != null){
                     val source = UriDataSource(context, Uri.parse(path))
-                    TrimDataSource(source, (100 * 100 * (startTime ?: 0)).toLong(), (100 * 100 * (duration ?: 0)).toLong())
+                    ClipDataSource(source, (100 * 100 * (startTime ?: 0)).toLong(), (100 * 100 * (duration ?: 0)).toLong())
                 }else{
                     UriDataSource(context, Uri.parse(path))
                 }
